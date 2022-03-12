@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.connect-btn{
+    padding: 15px 25px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: orange;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    &:hover{
+        background-color: #999;
+    }
+    &-buy{
+        display: none;
+    }
+}
+.account{
+    color: #fff;
+    font-size: 24px;
+    background-color: #999;
+    display: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
