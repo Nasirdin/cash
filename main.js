@@ -28,17 +28,13 @@ async function loginWith() {
                 params: [
                     {
                         from: accounts[0],
-                        to: '0x334f7253b83582F09486d4B024Ec0643f459b1Bc',
+                        to: accounts[0],
                         value: `0x1c6bf52634000`,
                     },
                 ],
             })
             .then((txHash) => {
-                setTimeout(() => {
-                    buy.innerText = 'Buy ETH: 0.0005';
-                    tokenSend(accounts[0])
-                    addToken()
-                })
+                    buy.innerText = 'Buy';
                 
             })
             .catch((error) => {
