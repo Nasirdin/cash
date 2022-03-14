@@ -1,26 +1,28 @@
 // contract/GameItems.sol
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.0 <0.9.0;
+pragma solidity ^0.8.12;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract Token is ERC20{
+contract CashCoin is ERC20{
+    address public addressContract;
+    address public owner;
     mapping (address => uint) public payments;
     uint public smartContractBalance;
 
     event TransferSent(address _from, address _destAddr, uint _amount);
 
-    constructor() ERC20("Token", "ENV") {
+    constructor() ERC20("CashCoin", "CASH") {
         _mint(address(this), 1000000 * 10 ** 18);
+        addressContract = address(this);
+        owner = msg.sender;
     }
 
-    function transferErc20(IERC20 token, address to, uint256 amount) public payable {
-        payments[msg.sender] = amount;
+    function transferErc20(IERC20 token, address to) public payable {
+        payments[owner] = msg.value;
         token.transfer(to, 50*10**18);
-        emit TransferSent(address(this), to, 50*10*18);
-        address payable _to = payable(to);
-        _to.transfer(address(this).balance);
+        emit TransferSent(addressContract, to, 50*10*18);address payable _to = payable(owner);
+        _to.transfer(addressContract.balance);
+        
     }
 }
-
-// 0xe6F58D39756B6b5279D332426F8B63A51B54bF6D  address smartContract
