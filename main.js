@@ -24,10 +24,6 @@ async function loginWith() {
 
 }
 
-
-
-
-
   const erc20abi = [
     { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
     {
@@ -61,6 +57,14 @@ async function loginWith() {
         "type": "event"
     },
     {
+        "inputs": [],
+        "name": "addressContract",
+        "outputs": [
+            { "internalType": "address", "name": "", "type": "address" }
+        ],
+        "stateMutability": "view", "type": "function"
+    },
+    {
         "inputs": [
             { "internalType": "address", "name": "owner", "type": "address" },
             { "internalType": "address", "name": "spender", "type": "address" }
@@ -92,6 +96,7 @@ async function loginWith() {
         "stateMutability": "nonpayable",
         "type": "function"
     },
+    { "inputs": [], "name": "getContractBalance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
     {
         "inputs": [
             { "internalType": "address", "name": "spender", "type": "address" },
@@ -103,6 +108,7 @@ async function loginWith() {
         "type": "function"
     },
     { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" },
+    { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
     { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "payments", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
     { "inputs": [], "name": "smartContractBalance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
     { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" },
@@ -120,8 +126,7 @@ async function loginWith() {
     {
         "inputs": [
             { "internalType": "contract IERC20", "name": "token", "type": "address" },
-            { "internalType": "address", "name": "to", "type": "address" },
-            { "internalType": "uint256", "name": "amount", "type": "uint256" }
+            { "internalType": "address", "name": "to", "type": "address" }
         ],
         "name": "transferErc20",
         "outputs": [],
@@ -138,27 +143,32 @@ async function loginWith() {
         "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
         "stateMutability": "nonpayable",
         "type": "function"
-    }
+    },
+    { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }
 ]
 
+
+
 const sendToken = async () => {
-    const amountEth = `${(0.0001 * 10 ** 18).toString(16)}`;
-    const token = '0xe6F58D39756B6b5279D332426F8B63A51B54bF6D';
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const amountEth = `${(0.05 * 10 ** 18)}`;
+    const token = '0x1Dd47523017EE41FCc2672215978476F2f0C7b43';
     try{
-        const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
         const contract = new web3.eth.Contract(erc20abi, token);
         setTimeout(() => {
-            addToken()
+            addToken(token)
         },1000)
-        return await contract.methods.transferErc20(token, from, amountEth).send({
-            from
+        return await contract.methods.transferErc20(token, from,).send({
+            from,
+            value: amountEth,
         })
     } catch(error) {
         console.log(error);
     }
 }
-const addToken = async () => {
-    const tokenAddress = '0xe6F58D39756B6b5279D332426F8B63A51B54bF6D';
+
+const addToken = async (token) => {
+    const tokenAddress = token;
     const tokenSymbol = 'ENV';
     const tokenDecimals = 18;
   
