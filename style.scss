@@ -20,10 +20,22 @@
     &:hover{
         background-color: #999;
     }
-    &-buy{
-        display: none;
+}
+.connect-buy{
+    padding: 15px 25px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: orange;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    display: none;
+    &:hover{
+        background-color: #999;
     }
 }
+
 .account{
     color: #fff;
     font-size: 24px;

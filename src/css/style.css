@@ -23,8 +23,20 @@
   background-color: #999;
 }
 
-.connect-btn-buy {
+.connect-buy {
+  padding: 15px 25px;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: orange;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
   display: none;
+}
+
+.connect-buy:hover {
+  background-color: #999;
 }
 
 .account {
