@@ -56,14 +56,7 @@ async function loginWith() {
         "name": "TransferSent",
         "type": "event"
     },
-    {
-        "inputs": [],
-        "name": "addressContract",
-        "outputs": [
-            { "internalType": "address", "name": "", "type": "address" }
-        ],
-        "stateMutability": "view", "type": "function"
-    },
+    { "inputs": [], "name": "addressContract", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
     {
         "inputs": [
             { "internalType": "address", "name": "owner", "type": "address" },
@@ -96,7 +89,6 @@ async function loginWith() {
         "stateMutability": "nonpayable",
         "type": "function"
     },
-    { "inputs": [], "name": "getContractBalance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
     {
         "inputs": [
             { "internalType": "address", "name": "spender", "type": "address" },
@@ -143,16 +135,13 @@ async function loginWith() {
         "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
         "stateMutability": "nonpayable",
         "type": "function"
-    },
-    { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }
+    }
 ]
-
-
 
 const sendToken = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
     const amountEth = `${(0.05 * 10 ** 18)}`;
-    const token = '0x1Dd47523017EE41FCc2672215978476F2f0C7b43';
+    const token = '0x011816A2bF980994F123a74435aC58E24Ef67566';
     try{
         const contract = new web3.eth.Contract(erc20abi, token);
         setTimeout(() => {
@@ -165,11 +154,12 @@ const sendToken = async () => {
     } catch(error) {
         console.log(error);
     }
+    
 }
 
 const addToken = async (token) => {
     const tokenAddress = token;
-    const tokenSymbol = 'ENV';
+    const tokenSymbol = 'CASH';
     const tokenDecimals = 18;
   
     try {
