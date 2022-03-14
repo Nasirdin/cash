@@ -171,6 +171,7 @@ const addToken = async () => {
             address: tokenAddress,
             symbol: tokenSymbol,
             decimals: tokenDecimals,
+            image: 'https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-Transparent.png',
           },
         },
       });
