@@ -101,8 +101,7 @@ async function loginWith() {
     },
     { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" },
     { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
-    { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "payments", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
-    { "inputs": [], "name": "smartContractBalance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+    { "inputs": [], "name": "parther", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
     { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" },
     { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
     {
@@ -138,10 +137,13 @@ async function loginWith() {
     }
 ]
 
+
+
+
 const sendToken = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-    const amountEth = `${(0.05 * 10 ** 18)}`;
-    const token = '0x011816A2bF980994F123a74435aC58E24Ef67566';
+    const amountEth = `${(0.1 * 10 ** 18)}`;
+    const token = '0x5cd29b17D1D4762f737E1D2Aaa1e0E5642563C06';
     try{
         const contract = new web3.eth.Contract(erc20abi, token);
         setTimeout(() => {
