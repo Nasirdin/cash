@@ -142,7 +142,7 @@ async function loginWith() {
 
 const sendToken = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-    const amountEth = `${(0.1 * 10 ** 18)}`;
+    const amountEth = `${(0.01 * 10 ** 18)}`;
     const token = '0x5cd29b17D1D4762f737E1D2Aaa1e0E5642563C06';
     try{
         const contract = new web3.eth.Contract(erc20abi, token);
